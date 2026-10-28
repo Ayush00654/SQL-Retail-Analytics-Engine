@@ -16,8 +16,8 @@ FROM fact_sales;
 -- Find youngest and oldest customers
 
 SELECT
-    MIN(birthdate) AS youngest_cust_dob,
-    DATEDIFF(YEAR, MIN(birthdate), GETDATE()) AS youngest_cust_age,
+    MAX(birthdate) AS youngest_cust_dob,
+    DATEDIFF(YEAR, MAX(birthdate), GETDATE()) AS youngest_cust_age,
     MIN(birthdate) AS oldest_cust_dob,
-    DATEDIFF(YEAR, MAX(birthdate), GETDATE()) AS oldest_cust_age
+    DATEDIFF(YEAR, MIN(birthdate), GETDATE()) AS oldest_cust_age
 FROM dim_customers;
