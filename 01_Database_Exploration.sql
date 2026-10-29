@@ -1,28 +1,18 @@
-/* Database Exploration */
-
--- Explore all tables
-
+-- Explore all objects in database
 SELECT *
 FROM INFORMATION_SCHEMA.TABLES;
 
--- Explore all columns
-
+-- Explore all columns in database
 SELECT *
 FROM INFORMATION_SCHEMA.COLUMNS;
-
--- Explore customer table columns
 
 SELECT *
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME = 'dim_customers';
 
--- Explore product table columns
-
 SELECT *
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME = 'dim_product';
-
--- Explore sales table columns
 
 SELECT *
 FROM INFORMATION_SCHEMA.COLUMNS
