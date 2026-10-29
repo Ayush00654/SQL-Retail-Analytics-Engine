@@ -1,23 +1,15 @@
-/* Dimension Exploration */
-
--- Explore all countries our customers come from
-
+-- Explore all the countries our customers come from
 SELECT DISTINCT country
 FROM dim_customers;
 
--- Explore all product categories
-
+-- Explore all categories of products
 SELECT DISTINCT category
 FROM dim_product;
-
--- Explore categories and subcategories
 
 SELECT DISTINCT
     category,
     subcategory
 FROM dim_product;
-
--- Explore products by category and subcategory
 
 SELECT DISTINCT
     category,
