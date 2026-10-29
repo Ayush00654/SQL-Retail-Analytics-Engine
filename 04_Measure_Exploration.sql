@@ -1,77 +1,68 @@
-/* Measure Exploration */
-
--- Total Sales
-
-SELECT SUM(sal*s_amount) AS total_sales
-FROM fact*sales;
-
--- Total Quantity Sold
-
-SE*ECT SUM(quantity) AS total_quantit*
+-- Find the Total Sales
+SELECT SUM(sales_amount) AS total_sales
 FROM fact_sales;
 
--- Average Sell*ng Price
-
-SELECT AVG(price) AS avg*price
+-- Find how many items are sold
+SELECT SUM(quantity) AS total_quantity
 FROM fact_sales;
 
--- Total O*ders
-
-SELECT COUNT(order_number) A* total_order_no
+-- Find the average selling price
+SELECT AVG(price) AS avg_price
 FROM fact_sales;
 
-*ELECT COUNT(DISTINCT(order_number)* AS total_order_no
-FROM fact_sales*
-
--- Total Products
-
-SELECT COUNT(*roduct_key) AS total_no_prd
-FROM d*m_product;
-
-SELECT COUNT(DISTINCT(*roduct_key)) AS total_no_prd
-FROM *im_product;
-
--- Total Customers
-
-S*LECT COUNT(DISTINCT(customer_key))*AS total_no_prd
-FROM dim_customers*
-
--- Customers who placed orders
-
-*ELECT COUNT(DISTINCT(customer_key)* AS total_no_prd
+-- Find total number of orders
+SELECT COUNT(order_number) AS total_order_no
 FROM fact_sales;
-*-- Business Metrics Report
 
-SELECT*'total sales' AS measure_name ,
-  *    SUM(sales_amount) AS measure_v*lues
+SELECT COUNT(DISTINCT order_number) AS total_order_no
+FROM fact_sales;
+
+-- Find total number of products
+SELECT COUNT(product_key) AS total_no_prd
+FROM dim_product;
+
+SELECT COUNT(DISTINCT product_key) AS total_no_prd
+FROM dim_product;
+
+-- Find total number of customers
+SELECT COUNT(DISTINCT customer_key) AS total_no_customers
+FROM dim_customers;
+
+-- Find total number of customers that placed an order
+SELECT COUNT(DISTINCT customer_key) AS total_no_customers
+FROM fact_sales;
+
+-- Business KPI Report
+SELECT 'Total Sales' AS measure_name,
+       SUM(sales_amount) AS measure_values
 FROM fact_sales
 
 UNION ALL
 
-SELECT 'total quantity',
+SELECT 'Total Quantity',
        SUM(quantity)
 FROM fact_sales
 
 UNION ALL
 
-SELECT 'average price',
+SELECT 'Average Price',
        AVG(price)
 FROM fact_sales
 
 UNION ALL
 
-SELECT 'total nr.order',
+SELECT 'Total Nr. Orders',
        COUNT(DISTINCT order_number)
 FROM fact_sales
 
 UNION ALL
 
-SELECT 'total nr.product',
+SELECT 'Total Nr. Products',
        COUNT(product_name)
 FROM dim_product
 
 UNION ALL
 
-SELECT 'nr.customers',
+SELECT 'Total Nr. Customers',
        COUNT(customer_key)
 FROM dim_customers;
